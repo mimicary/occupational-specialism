@@ -2,7 +2,7 @@
     <?php
     session_start(); # session start on pages not each file
 
-    require_once('assets/common.php');
+    require_once('assets/common.php'); # requires common so functions can be called
 
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -14,14 +14,14 @@
     <head>
         <title>Session Page</title>
 
-        <link rel="stylesheet" href="assets/styles.css"
+        <link rel="stylesheet" href="assets/styles.css"/> <!-- style sheet -->
 
     </head>
 
     <body>
 
     <?php
-    echo user_message()
+    echo user_message() # calls subroutine and runs inside this page so can use variables from this page
     ?>
 
     <form method="post" action="">
