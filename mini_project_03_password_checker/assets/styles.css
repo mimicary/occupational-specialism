@@ -26,3 +26,21 @@ h1 {
     height: auto;
     margin-top: 30px;
 }
+
+
+#text_box {
+    border-radius: 15px;
+    font-size: 40px;
+    background: #d9d9d9;
+    border: solid black 1px;
+    width: 100%;
+    justify-self: center;
+    height: auto;
+    margin-top: 30px;
+    text-align: left;
+}
+
+
+#submit_button {
+    font-size: 30px;
+}

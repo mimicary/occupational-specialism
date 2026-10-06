@@ -5,14 +5,7 @@
     require_once('assets/common.php'); # requires common so functions can be called
 
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        //$_SESSION['user_message'] = $_POST["message"];
-        if (string_length($_POST["password"])) {
-            $_SESSION["user_message"] = "Password long enough!";
-        } else {
-            $_SESSION["user_message"] = "Password too short!";
-        }
-    }
+
 
     ?>
     <html>
@@ -33,12 +26,32 @@
 
     <form method="post" action="">
 
-        <input type="text" name="password" required/>
-        <input type="submit" name="submit"/>
+        <input type="text" name="password" required id="text_box" placeholder="Password..."/>
+            <br>
+            <br>
+        <input type="submit" name="submit"  id="submit_button"/>
 
     </form>
     <?php
-    echo user_message() # calls subroutine and runs inside this page so can use variables from this page
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        echo string_length($_POST["password"]);
+        echo nl2br("\n");
+        echo contain_uppercase($_POST["password"]);
+        echo nl2br("\n");
+        echo contain_lowercase($_POST["password"]);
+        echo nl2br("\n");
+        echo contain_digit($_POST["password"]);
+        echo nl2br("\n");
+        echo contains_pswd_word($_POST["password"]);
+        echo nl2br("\n");
+        echo contains_special_char($_POST["password"]);
+        echo nl2br("\n");
+        echo first_char_not_num($_POST["password"]);
+        echo nl2br("\n");
+        echo first_char_not_spec($_POST["password"]);
+        echo nl2br("\n");
+        echo last_char_not_spec($_POST["password"]);
+    }
     ?>
 
 
