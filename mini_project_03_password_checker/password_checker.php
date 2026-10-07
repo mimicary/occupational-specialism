@@ -32,6 +32,8 @@
         <input type="submit" name="submit"  id="submit_button"/>
 
     </form>
+
+    <div class="results">
     <?php
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo string_length($_POST["password"]);
@@ -53,7 +55,7 @@
         echo last_char_not_spec($_POST["password"]);
     }
     ?>
-
+    </div>
 
     </body>
     </html>

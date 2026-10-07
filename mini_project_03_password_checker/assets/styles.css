@@ -31,7 +31,6 @@ h1 {
 #text_box {
     border-radius: 15px;
     font-size: 40px;
-    background: #d9d9d9;
     border: solid black 1px;
     width: 100%;
     justify-self: center;
@@ -42,5 +41,23 @@ h1 {
 
 
 #submit_button {
-    font-size: 30px;
+    font-size: 45px;
+    text-align: center;
+    border: solid black 1px;
+    justify-self: center;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.results {
+    border-radius: 50px;
+    font-size: 45px;
+    text-align: center;
+    background: #d9d9d9;
+    border: solid black 1px;
+    width: 100%;
+    justify-self: center;
+    height: auto;
+    margin-top: 30px;
 }
