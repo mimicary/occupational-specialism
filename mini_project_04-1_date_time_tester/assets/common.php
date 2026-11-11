@@ -90,13 +90,14 @@ function make_booking($conn){
     $mysql_datetime = $dt->format('Y-m-d H:i:s'); // removes t and formats it in a way laragon understands
 
     // Prepare and execute the SQL query
-    $sql = "INSERT INTO appointment (datetime, bookedon, proid, patientid) VALUES (?, ?, ?, ?)";  //prepare the sql to be sent
+    $sql = "INSERT INTO appointment (datetime, bookedon, notes, proid, patientid) VALUES (?, ?, ?, ?, ?)";  //prepare the sql to be sent
     $stmt = $conn->prepare($sql); //prepare to sql
 
     $stmt->bindParam(1, $mysql_datetime);  //bind parameters for security
     $stmt->bindParam(2, date('Y-m-d H:i:s'));
     $stmt->bindParam(3, $_POST['proid']);
-    $stmt->bindParam(4, $_SESSION['userid']);
+    $stmt->bindParam(4, 'NULL');
+    $stmt->bindParam(5, $_SESSION['userid']);
 
 
 

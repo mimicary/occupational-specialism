@@ -5,8 +5,8 @@ session_start();
 require_once "assets/common.php";
 require_once "assets/dbconnect.php";
 
-if (isset($_SESSION['userid'])) {
-    $_SESSION['usermessage'] = "ERROR: You have already logged in!";
+if (!(isset($_SESSION['userid']))) {
+    $_SESSION['usermessage'] = "ERROR: You are not logged in.";
     header("Location: index.php");
     exit;
 }

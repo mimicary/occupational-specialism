@@ -1,11 +1,11 @@
 <?php // This open the php code section
 
-if (!isset($_GET['message'])) {
+if (!isset($_GET['usermessage'])) {
     session_start();
     $message = false;
 } else {
     // Decode the message for display
-    $message = htmlspecialchars(urldecode($_GET['message']));
+    $message = htmlspecialchars(urldecode($_GET['usermessage']));
 }
 require_once "assets/common.php";
 ?>
