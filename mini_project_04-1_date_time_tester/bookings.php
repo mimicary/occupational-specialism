@@ -5,6 +5,13 @@ session_start();
 require_once "assets/common.php";
 require_once "assets/dbconnect.php";
 
+if (isset($_SESSION['userid'])) {
+    $_SESSION['usermessage'] = "ERROR: You have already logged in!";
+    header("Location: index.php");
+    exit;
+}
+
+
 $bookings = check_booking(dbconn());
 
 if ($bookings === false){
