@@ -5,20 +5,80 @@
     flex-direction: column;
 }
 
+
+body { /*  this will style the background and the font */
+    background-color: #0098a5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+h1 {
+    border-radius: 50px;
+    font-size: 45px;
+    text-align: center;
+    background: #d9d9d9;
+    border: solid black 1px;
+    width: 100%;
+    justify-self: center;
+    height: auto;
+    margin-top: 30px;
+}
 nav ul {
     list-style-type: none;  /* removes the bullet points */
     margin: 0;  /* removes any margin */
     padding: 0; /* removes any padding */
     display: flex; /* Makes the list items a flex container */
     justify-content: flex-start; /* Aligns items to the start of the container */
-    background-color: #333; /* Adds a background color */
 }
 
 nav li {
     margin: 0 10px 0 10px;
 }
 
-body { /*  this will style the background and the font */
-    background-color: mediumseagreen;
-    font-family: Arial, Helvetica, sans-serif;
+
+nav {
+    border-radius: 50px;
+    font-size: 35px;
+    text-align: center;
+    background: #d9d9d9;
+    border: solid black 1px;
+    width: 100%;
+    justify-self: center;
+    height: auto;
+    margin-top: 30px;
+}
+
+
+#text_box {
+    border-radius: 15px;
+    font-size: 40px;
+    border: solid black 1px;
+    width: 100%;
+    justify-self: center;
+    height: auto;
+    margin-top: 30px;
+    text-align: left;
+}
+
+
+#submit_button {
+    font-size: 45px;
+    text-align: center;
+    border: solid black 1px;
+    justify-self: center;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.results {
+    border-radius: 50px;
+    font-size: 45px;
+    text-align: center;
+    background: #d9d9d9;
+    border: solid black 1px;
+    width: 100%;
+    justify-self: center;
+    height: auto;
+    margin-top: 30px;
 }
