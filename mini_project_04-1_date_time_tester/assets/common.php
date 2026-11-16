@@ -58,11 +58,11 @@ function login($conn, $email){
 }
 
 function check_booking($conn){
-    $sql = "SELECT datetime, proid FROM appointment WHERE patientid = ?"; //set up the sql statement
+    $sql = "SELECT p.fname, p.sname, p.roomno, a.datetime, a.notes, a.bookedon, a.appid  FROM appointment AS a INNER JOIN professional AS p ON a.proid = p.proid WHERE a.patientid = ?"; //set up the sql statement
     $stmt = $conn->prepare($sql); //prepares
     $stmt->bindParam(1,$_SESSION['userid']);  //binds the parameters to execute
     $stmt->execute(); //run the sql code
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);  //brings back results
+    $result = $stmt->fetchall(PDO::FETCH_ASSOC);  //brings back results
     $conn = null;  // nulls off the connection so cant be abused.
 
     if($result){  // if there is a result returned
@@ -89,14 +89,18 @@ function make_booking($conn){
     $dt = new DateTime($_POST['appt-time']); // date time picker sticks a t in here getting a type error
     $mysql_datetime = $dt->format('Y-m-d H:i:s'); // removes t and formats it in a way laragon understands
 
+    $notes = "";
+
+    $todayDt = date('Y-m-d H:i:s');
+
     // Prepare and execute the SQL query
     $sql = "INSERT INTO appointment (datetime, bookedon, notes, proid, patientid) VALUES (?, ?, ?, ?, ?)";  //prepare the sql to be sent
     $stmt = $conn->prepare($sql); //prepare to sql
 
     $stmt->bindParam(1, $mysql_datetime);  //bind parameters for security
-    $stmt->bindParam(2, date('Y-m-d H:i:s'));
-    $stmt->bindParam(3, $_POST['proid']);
-    $stmt->bindParam(4, 'NULL');
+    $stmt->bindParam(2, $todayDt);
+    $stmt->bindParam(3, $notes);
+    $stmt->bindParam(4, $_POST['proid']);
     $stmt->bindParam(5, $_SESSION['userid']);
 
 

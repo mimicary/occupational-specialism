@@ -64,7 +64,7 @@ if (!(isset($_SESSION['userid']))) {
         />
 
         <br>
-        <select name="professional">
+        <select name="proid">
 
             <?php
 

@@ -12,14 +12,6 @@ if (!(isset($_SESSION['userid']))) {
 }
 
 
-$bookings = check_booking(dbconn());
-
-if ($bookings === false){
-    $_SESSION['usermessage'] = "No Bookings Made";
-} else {
-    $_SESSION['usermessage'] = $bookings;
-}
-
 
 ?>
 
@@ -43,7 +35,12 @@ if ($bookings === false){
     ?>
 
     <?php
-    echo usermessage();
+    $appts = check_booking(dbconn());
+
+    foreach ($appts as $appt){
+
+    }
+
     ?>
 
 </div>
