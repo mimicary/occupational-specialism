@@ -9,9 +9,25 @@ if (!(isset($_SESSION['userid']))) {
     $_SESSION['usermessage'] = "ERROR: You are not logged in.";
     header("Location: index.php");
     exit;
+} elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
+    try {
+        if (delete_appointment(dbconn())) {
+            $_SESSION['usermessage'] = "Appointment deleted.";
+            header("Location: bookings.php");
+            exit;
+
+        } else {
+            $_SESSION['usermessage'] = "Error deleting appointment.";
+            header("Location: bookings.php");
+            exit;
+        }
+    } catch (PDOException $e) {
+        $_SESSION['usermessage'] = "ERROR: " . $e->getMessage();
+        header("Location: bookings.php");
+        exit;
+    }
+
 }
-
-
 
 ?>
 
@@ -35,10 +51,24 @@ if (!(isset($_SESSION['userid']))) {
     ?>
 
     <?php
+    echo usermessage()
+
+    ?>
+
+
+    <?php
     $appts = check_booking(dbconn());
-
-    foreach ($appts as $appt){
-
+    if(!$appts){
+        echo"<p>There are no booking available.</p>";
+    } else {
+        foreach ($appts as $appt) {
+            echo "<form id=" . $appt['appid'] . " method='post' >";
+            echo "<input type=hidden name='appid' value='" . $appt['appid'] . "'>";
+            echo $appt['datetime'] . " with " . $appt['role'] . $appt['fname'] . " " . $appt['sname'];
+            echo "<input type='submit' name='delete' value='Delete'>";
+            echo "<p>";
+            echo "</form>";
+        }
     }
 
     ?>

@@ -109,3 +109,12 @@ function make_booking($conn){
     $conn = null;  // closes the connection so cant be abused.
     return true; // Registration successful
 }
+
+function delete_appointment($conn){
+    $sql = "DELETE FROM appointment WHERE appid = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(1,$_POST['appid']);
+    $stmt->execute();
+    $conn = null;
+    return true;
+}
