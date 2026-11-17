@@ -136,3 +136,37 @@ function get_user($conn)
     return $result;
 
 }
+
+function update_user_info($conn){
+    $sql = "UPDATE patient SET 
+                   email = ?, 
+                   fname = ?, 
+                   sname = ?, 
+                   addressln1 = ?, 
+                   addressln2 = ?, 
+                   county = ?, 
+                   postcode = ?, 
+                   gender = ?, 
+                   `phone number` = ?
+               WHERE patientid = ?";  //prepare the sql to be sent
+
+    $stmt = $conn->prepare($sql); //prepare to sql
+
+    $stmt->bindParam(1, $_POST['email']);  //bind parameters for security
+    $stmt->bindParam(2, $_POST['fname']);
+    $stmt->bindParam(3, $_POST['sname']);
+    $stmt->bindParam(4, $_POST['addressln1']);
+    $stmt->bindParam(5, $_POST['addressln2']);
+    $stmt->bindParam(6, $_POST['county']);
+    $stmt->bindParam(7, $_POST['postcode']);
+    $stmt->bindParam(8, $_POST['gender']);
+    $stmt->bindParam(9, $_POST['phone']);
+
+    $stmt->bindParam(10, $_SESSION['userid']);
+
+    $stmt->execute(); //run the sql code
+    $conn = null;
+
+    return true;
+
+}
