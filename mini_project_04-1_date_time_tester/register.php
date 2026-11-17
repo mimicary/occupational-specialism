@@ -83,7 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type='text' name='sname' placeholder='Surname' required/>
             <br>
 
-            <input type='date' name='dob' value=". date('Y-m-d')." required/>
+            <label for="dob">Birth Date:</label>
+            <input type='date' name='dob' id='dob' value=". date('Y-m-d')." required/>
             <br>
 
             <label for="gender">Gender:</label>

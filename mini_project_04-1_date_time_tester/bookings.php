@@ -64,7 +64,7 @@ if (!(isset($_SESSION['userid']))) {
         foreach ($appts as $appt) {
             echo "<form id=" . $appt['appid'] . " method='post' >";
             echo "<input type=hidden name='appid' value='" . $appt['appid'] . "'>";
-            echo $appt['datetime'] . " with " . $appt['role'] . $appt['fname'] . " " . $appt['sname'];
+            echo $appt['datetime'] . " with " . $appt['role'] . " " .$appt['fname'] . " " . $appt['sname'] . " in room " . $appt['roomno'];
             echo "<input type='submit' name='delete' value='Delete'>";
             echo "<p>";
             echo "</form>";

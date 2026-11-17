@@ -13,6 +13,7 @@ if(!isset($_SESSION['userid'])){
     echo "<li class='linkbox'> <a href='book.php'>Book</a></li>";
     echo "<li class='linkbox'> <a href='bookings.php'>Bookings</a></li>";
     echo "<li class='linkbox'> <a href='logout.php'>Logout</a></li>";
+    echo "<li class='linkbox'> <a href='Profile.php'>Profile</a></li>";
 }
 echo "</ul>";  # closes the row of the table.
 

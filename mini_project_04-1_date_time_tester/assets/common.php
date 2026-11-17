@@ -58,7 +58,7 @@ function login($conn, $email){
 }
 
 function check_booking($conn){
-    $sql = "SELECT p.fname, p.sname, p.roomno, a.datetime, a.notes, a.bookedon, a.appid  FROM appointment AS a INNER JOIN professional AS p ON a.proid = p.proid WHERE a.patientid = ?"; //set up the sql statement
+    $sql = "SELECT p.role, p.fname, p.sname, p.roomno, a.datetime, a.notes, a.bookedon, a.appid  FROM appointment AS a INNER JOIN professional AS p ON a.proid = p.proid WHERE a.patientid = ?"; //set up the sql statement
     $stmt = $conn->prepare($sql); //prepares
     $stmt->bindParam(1,$_SESSION['userid']);  //binds the parameters to execute
     $stmt->execute(); //run the sql code
@@ -117,4 +117,22 @@ function delete_appointment($conn){
     $stmt->execute();
     $conn = null;
     return true;
+}
+
+function get_user($conn)
+{
+
+    // Prepare and execute the SQL query
+    $sql = "SELECT * FROM patient WHERE patientid = ?";  //prepare the sql to be sent
+    $stmt = $conn->prepare($sql); //prepare to sql
+
+    $stmt->bindParam(1, $_SESSION['userid']);  //bind parameters for security
+
+    $stmt->execute(); //run the sql code
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);  //brings back results
+    $conn = null;
+
+
+    return $result;
+
 }
